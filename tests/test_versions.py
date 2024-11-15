@@ -220,6 +220,7 @@ def test_golang_version():
     assert GolangVersion("v0.1.1") <= GolangVersion("v0.1.1")
     assert GolangVersion("v0.1.1") <= GolangVersion("v0.1.2")
 
+
 def test_lexicographic_version():
     assert LexicographicVersion("abc") == LexicographicVersion("abc")
     assert LexicographicVersion(" abc") == LexicographicVersion("abc")

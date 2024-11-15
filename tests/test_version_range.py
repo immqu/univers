@@ -571,6 +571,7 @@ def test_version_range_none():
     with pytest.raises(Exception):
         VersionRange.from_string("vers:none/*|>1.2.3")
 
+
 def test_version_range_lexicographic():
     assert LexicographicVersion("1.2.3") in VersionRange.from_string("vers:all/*")
     assert LexicographicVersion(-123) in VersionRange.from_string("vers:all/*")
