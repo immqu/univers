@@ -968,6 +968,11 @@ class GolangVersionRange(VersionRange):
     }
 
 
+class LexicographicVersionRange(VersionRange):
+    scheme = "lexicographic"
+    version_class = versions.LexicographicVersion
+
+
 class GenericVersionRange(VersionRange):
     scheme = "generic"
     version_class = versions.SemverVersion
@@ -1440,6 +1445,7 @@ RANGE_CLASS_BY_SCHEMES = {
     "conan": ConanVersionRange,
     "all": AllVersionRange,
     "none": NoneVersionRange,
+    "lexicographic": LexicographicVersionRange,
 }
 
 PURL_TYPE_BY_GITLAB_SCHEME = {
