@@ -12,6 +12,7 @@ from univers import arch
 from univers import debian
 from univers import gem
 from univers import gentoo
+from univers import libversion
 from univers import maven
 from univers import nuget
 from univers import rpm
@@ -143,6 +144,16 @@ class NoneVersion(Version):
     @classmethod
     def is_valid(cls, string):
         return string == "vers:none/*"
+
+
+class LibversionVersion(Version):
+    @classmethod
+    def is_valid(cls, string):
+        return libversion.LibversionVersion(string)
+
+    @classmethod
+    def build_value(cls, string):
+        return libversion.LibversionVersion(string)
 
 
 class GenericVersion(Version):

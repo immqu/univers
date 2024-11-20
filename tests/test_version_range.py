@@ -14,6 +14,7 @@ from univers.version_range import RANGE_CLASS_BY_SCHEMES
 from univers.version_range import ConanVersionRange
 from univers.version_range import GemVersionRange
 from univers.version_range import InvalidVersionRange
+from univers.version_range import LibversionVersionRange
 from univers.version_range import MattermostVersionRange
 from univers.version_range import NpmVersionRange
 from univers.version_range import NugetVersionRange
@@ -23,6 +24,7 @@ from univers.version_range import VersionRange
 from univers.version_range import build_range_from_snyk_advisory_string
 from univers.version_range import from_gitlab_native
 from univers.versions import InvalidVersion
+from univers.versions import LibversionVersion
 from univers.versions import NugetVersion
 from univers.versions import OpensslVersion
 from univers.versions import PypiVersion
@@ -569,3 +571,10 @@ def test_version_range_none():
         VersionRange.from_string("vers:none/!1.2.3")
     with pytest.raises(Exception):
         VersionRange.from_string("vers:none/*|>1.2.3")
+
+
+def test_version_range_libversion():
+    assert LibversionVersion("1.2.3") in LibversionVersionRange.from_string("vers:libversion/*")
+    assert LibversionVersion("1.2.3") in LibversionVersionRange.from_string(
+        "vers:libversion/>0.9|<2.1.0-alpha"
+    )
